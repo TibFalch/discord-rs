@@ -28,6 +28,7 @@ extern crate websocket;
 #[macro_use]
 extern crate bitflags;
 extern crate byteorder;
+#[cfg(feature="use_opus")]
 extern crate opus;
 extern crate time;
 #[macro_use]
@@ -42,6 +43,7 @@ use serde_json::builder::ObjectBuilder;
 mod error;
 mod connection;
 mod state;
+#[cfg(feature="use_opus")]
 pub mod voice;
 pub mod model;
 
