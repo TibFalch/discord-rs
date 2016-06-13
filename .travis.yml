@@ -12,7 +12,8 @@ install:
 - wget https://github.com/jedisct1/libsodium/releases/download/1.0.8/libsodium-1.0.8.tar.gz
 - tar xvfz libsodium-1.0.8.tar.gz
 - cd libsodium-1.0.8 && ./configure --prefix=$HOME/installed_libsodium && make && make install && cd ..
-- sudo apt-get install libopus0 libopus-dev libssl-dev
+# libopus0 libopus-dev is missing for now
+- sudo apt-get install libssl-dev
 script:
 - cargo build --verbose
 - cargo test --verbose
