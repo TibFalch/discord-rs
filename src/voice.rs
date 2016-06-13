@@ -256,10 +256,9 @@ struct PcmSource<R: Read + Send>(bool, R);
 impl<R: Read + Send> AudioSource for PcmSource<R> {
     fn is_stereo(&mut self) -> bool { self.0 }
     fn read_frame(&mut self, buffer: &mut [i16]) -> Option<usize> {
-        for (i, val) in buffer.iter_mut().enumerate() {
+        for val in buffer.iter_mut() {
             *val = match self.1.read_i16::<LittleEndian>() {
                 Ok(val) => val,
-                Err(::byteorder::Error::UnexpectedEOF) => return Some(i),
                 Err(_) => return None
             }
         }

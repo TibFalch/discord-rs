@@ -374,7 +374,7 @@ pub mod permissions {
 
     bitflags! {
         /// Set of permissions assignable to a Role or PermissionOverwrite
-        flags Permissions: u64 {
+        pub flags Permissions: u64 {
             const CREATE_INVITE = 1 << 0,
             const KICK_MEMBERS = 1 << 1,
             const BAN_MEMBERS = 1 << 2,

@@ -712,11 +712,11 @@ impl Timer {
         self.next_tick_at = time::get_time();
     }
     */
-
+    #[cfg(feature="voice")]
     fn defer(&mut self) {
         self.next_tick_at = time::get_time() + self.tick_len;
     }
-
+    #[cfg(feature="voice")]
     fn sleep_until_tick(&mut self) {
         let difference = self.next_tick_at - time::get_time();
         if difference > time::Duration::zero() {
