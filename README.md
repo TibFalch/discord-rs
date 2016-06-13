@@ -17,9 +17,13 @@ pacman -S mingw-w64-x86_64-pkg-config mingw-w64-x86_64-libsodium mingw-w64-x86_6
 ### Mac
 
 ## Usage
-Just add our crate to your Cargo.toml file.
+Add this your Cargo.toml:
+```toml
+[dependencies]
+dasi = {git = "https://github.com/TibFalch/dasi-rs.git"}
+```
 
 To create a Discord client for your Bot to control you need to call `Discord::from_bot_token("YOUR-TOKEN")`
 
 ## discord-rs
-this is historically based on [SpaceManiac/discord-rs](https://github.com/SpaceManiac/discord-rs)
+This is historically based on [SpaceManiac/discord-rs](https://github.com/SpaceManiac/discord-rs)
