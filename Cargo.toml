@@ -13,7 +13,8 @@ repository = "https://github.com/tifalch/dasi"
 [dependencies]
 hyper = "0.8.1"
 serde_json = "0.7.1"
-websocket = "0.17.1"
+# Newest version is 0.17.1, but that one requires new hyper
+websocket = "0.15.1"
 bitflags = "0.7"
 byteorder = "0.5.3"
 opus = {version = "0.1", optional = true}
