@@ -53,7 +53,7 @@ pub use connection::Connection;
 pub use state::{State, ChannelRef};
 use model::*;
 
-const USER_AGENT: &'static str = concat!("DiscordBot (https://github.com/SpaceManiac/discord-rs, ", env!("CARGO_PKG_VERSION"), ")");
+const USER_AGENT: &'static str = concat!("DiscordBot (https://github.com/TibFalch/dasi-rs, ", env!("CARGO_PKG_VERSION"), ")");
 const API_BASE: &'static str = "https://discordapp.com/api";
 const GATEWAY_VERSION: u64 = 4;
 
@@ -707,19 +707,14 @@ impl Timer {
 		}
 	}
 
-	#[allow(dead_code)]
+	/* TODO Figure out why this is here!
 	fn immediately(&mut self) {
 		self.next_tick_at = time::get_time();
 	}
+	*/
 
 	fn defer(&mut self) {
 		self.next_tick_at = time::get_time() + self.tick_len;
-	}
-
-	fn check_tick(&mut self) -> bool {
-		time::get_time() >= self.next_tick_at && {
-			self.next_tick_at = self.next_tick_at + self.tick_len; true
-		}
 	}
 
 	fn sleep_until_tick(&mut self) {
@@ -729,6 +724,13 @@ impl Timer {
 		}
 		self.next_tick_at = self.next_tick_at + self.tick_len;
 	}
+
+	fn check_tick(&mut self) -> bool {
+		time::get_time() >= self.next_tick_at && {
+			self.next_tick_at = self.next_tick_at + self.tick_len; true
+		}
+	}
+
 }
 
 trait ReceiverExt {

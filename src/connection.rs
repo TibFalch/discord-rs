@@ -108,11 +108,10 @@ impl Connection {
 	#[cfg(feature="voice")]
 	fn inner_new(keepalive_channel: mpsc::Sender<Status>,
 	receiver: Receiver<WebSocketStream>,
-	user_id: UserId,
 	ws_url: String,
 	token: String,
 	session_id: Option<String>,
-	last_sequence: u64, ready: ReadyEvent) -> Result<Self>{
+	last_sequence: u64, ready: ReadyEvent) -> Result<(Self, ReadyEvent)> {
 		Ok((Connection {
 			keepalive_channel: keepalive_channel,
 			receiver: receiver,
@@ -121,7 +120,7 @@ impl Connection {
 			ws_url: ws_url,
 			token: token,
 			session_id: session_id,
-			last_sequence: sequence,
+			last_sequence: last_sequence,
 		}, ready))
 	}
 

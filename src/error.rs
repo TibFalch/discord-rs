@@ -96,6 +96,7 @@ impl From<BoError> for Error {
 	}
 }
 
+#[cfg(not(feature="voice"))]
 impl Display for Error {
 	fn fmt(&self, f: &mut ::std::fmt::Formatter) -> ::std::fmt::Result {
 		match *self {
@@ -109,6 +110,21 @@ impl Display for Error {
 	}
 }
 
+#[cfg(feature="voice")]
+impl Display for Error {
+	fn fmt(&self, f: &mut ::std::fmt::Formatter) -> ::std::fmt::Result {
+		match *self {
+			Error::Hyper(ref inner) => inner.fmt(f),
+			Error::Json(ref inner) => inner.fmt(f),
+			Error::WebSocket(ref inner) => inner.fmt(f),
+			Error::Io(ref inner) => inner.fmt(f),
+			Error::Opus(ref inner) => inner.fmt(f),
+			_ => f.write_str(self.description()),
+		}
+	}
+}
+
+#[cfg(not(feature="voice"))]
 impl StdError for Error {
 	fn description(&self) -> &str {
 		match *self {
@@ -116,7 +132,6 @@ impl StdError for Error {
 			Error::Json(ref inner) => inner.description(),
 			Error::WebSocket(ref inner) => inner.description(),
 			Error::Io(ref inner) => inner.description(),
-			//Error::Opus(ref inner) => inner.description(),
 			Error::Closed(_, _) => "Connection closed",
 			Error::Decode(msg, _) => msg,
 			Error::Status(status, _) => status.canonical_reason().unwrap_or("Unknown bad HTTP status"),
@@ -132,7 +147,36 @@ impl StdError for Error {
 			Error::Json(ref inner) => Some(inner),
 			Error::WebSocket(ref inner) => Some(inner),
 			Error::Io(ref inner) => Some(inner),
-			//Error::Opus(ref inner) => Some(inner),
+			_ => None,
+		}
+	}
+}
+
+#[cfg(feature="voice")]
+impl StdError for Error {
+	fn description(&self) -> &str {
+		match *self {
+			Error::Hyper(ref inner) => inner.description(),
+			Error::Json(ref inner) => inner.description(),
+			Error::WebSocket(ref inner) => inner.description(),
+			Error::Io(ref inner) => inner.description(),
+			Error::Opus(ref inner) => inner.description(),
+			Error::Closed(_, _) => "Connection closed",
+			Error::Decode(msg, _) => msg,
+			Error::Status(status, _) => status.canonical_reason().unwrap_or("Unknown bad HTTP status"),
+			Error::RateLimited(_) => "Rate limited",
+			Error::Protocol(msg) => msg,
+			Error::Other(msg) => msg,
+		}
+	}
+
+	fn cause(&self) -> Option<&StdError> {
+		match *self {
+			Error::Hyper(ref inner) => Some(inner),
+			Error::Json(ref inner) => Some(inner),
+			Error::WebSocket(ref inner) => Some(inner),
+			Error::Io(ref inner) => Some(inner),
+			Error::Opus(ref inner) => Some(inner),
 			_ => None,
 		}
 	}
