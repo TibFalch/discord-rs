@@ -1,15 +1,14 @@
 [package]
-name = "discord"
-version = "0.5.0"
-authors = ["Tad Hardesty <tad@platymuus.com>"]
+name = "dasi"
+version = "0.0.1"
+authors = ["Lucas Falch <lucas@wasd.dk>", "mtib <mtb@tibyte.net>"]
 
-description = "Client library for the Discord API"
-readme = "README.md"
+description = "Discord API library"
+readme = "README"
 license = "MIT"
 keywords = ["discord", "chat", "bot", "api", "voice"]
 
-repository = "https://github.com/SpaceManiac/discord-rs"
-documentation = "http://wombat.platymuus.com/rustdoc/discord_0.5.0/"
+repository = "https://github.com/tifalch/dasi"
 
 [dependencies]
 hyper = "0.7"
