@@ -1,28 +1,19 @@
-discord-rs [![](https://meritbadge.herokuapp.com/discord)](https://crates.io/crates/discord) [![](https://img.shields.io/badge/chat-Discord-blue.svg)](https://discord.gg/0SBTUU1wZTWAPisK) [![](https://img.shields.io/badge/docs-online-2020ff.svg)](http://wombat.platymuus.com/rustdoc/discord_master/)
-==========
-
-**discord-rs** is a [Rust](https://www.rust-lang.org) client library for the
+# dasi-rs
 [Discord](https://discordapp.com) chat client's API.
 
-The Discord API can be divided into three main components: the RESTful API
-to which calls can be made to take actions, a websocket-based permanent
-connection over which state updates are received, and the voice calling
-system.
+## Requirements
+### Linux
+```bash
+sudo -s
+apt-get install libsodium18 libsodium-dev libopus0 libopus-dev libssl-dev
+```
+### Windows
+### Mac
 
-Log in to Discord with `Discord::new`, `new_cache`, or `from_bot_token` as
-appropriate. The resulting value can be used to make REST API calls to post
-messages and manipulate Discord state. Calling `connect()` will open a
-websocket connection, through which events can be received. These two channels
-are enough to write a simple chatbot which can read and respond to messages.
+## Usage
+Just add our crate to your Cargo.toml file.
 
-For more in-depth tracking of Discord state, a `State` can be seeded with
-the `ReadyEvent` obtained when opening a `Connection` and kept updated with
-the events received over it.
+To create a Discord client for your Bot to control you need to call ```Discord::from_bot_token("YOUR-TOKEN")```
 
-To join voice servers, call `Connection::voice` to get a `VoiceConnection` and use `connect`
-to join a channel, then `play` and `stop` to control playback. Manipulating deaf/mute state
-and receiving audio are also possible.
-
-For further details, browse the [source](src/) or read
-[the documentation](http://wombat.platymuus.com/rustdoc/discord_master/).
-For examples, browse the [examples](examples/) directory.
+## discord-rs
+this is historically based on [SpaceManiac/discord-rs](https://github.com/SpaceManiac/discord-rs)
