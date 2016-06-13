@@ -9,9 +9,9 @@ env:
   global:
     secure: rMnTCTVrdl47ubwtBpZuekoX9i5VCsk+hBWWsqMzilk7SWo4EUwDBzH539BMsWp/tfADPhh+xJBkWKweiJQ/l5Wr6LkdARPuMfQrnsyJfFLRCVR9QljKS2zuSw92xiDKGQT3yUtnPeidGXWleUTilzpw+SZXbN6WiS8IDqYzSqawhODHU2PMy52aON/RCioDgU2TX7OW7wA715+12DC01PdBNvSGEm3a6B6L2D/px4WdUm0zbwo4HV+F2wRbMOW3Tnjl4dMcVCZOP1XLWSGBv5rqYb420GsQexo4G+4oXRf7GAIls3cL0v/mUIjxOaW04DW20gYd0xUZ5CQlWQ3RKpYvC/pTfQVJKEDfOEevnCSaiwWJi762PMgSKw2zFtA4Z0ajLGEVa2sV9xoozwkx/odDkVlwRz5dh6MKLYCpqnErUG+vaMNqgFN9fvhHaxy3C1mUFk+PIb39ZRi1l2hLQCi4D1otZXNnIJCpn4XB4qc6CpdynX17NmsVmA5O8o3EUBMhp+Kk3i+XFKRw0oBu0Vs5grDhEoV1ApGIBcs5YPy+RHhUOU0ANWUCB7cJLEY1FxUZSNEM56NCLgyXT4Xf+Op/3fMvEJ5vRstJiw0X1xXPRiSGZErXnbv09NTQLLgUfGImRZZh6MH0E44B4iovMzuOgouDcc47mway0WdskvY=
 install:
-- wget https://github.com/jedisct1/libsodium/releases/download/1.0.8/libsodium-1.0.8.tar.gz
-- tar xvfz libsodium-1.0.8.tar.gz
-- cd libsodium-1.0.8 && ./configure --prefix=$HOME/installed_libsodium && make && make install && cd ..
+# - wget https://github.com/jedisct1/libsodium/releases/download/1.0.8/libsodium-1.0.8.tar.gz
+# - tar xvfz libsodium-1.0.8.tar.gz
+# - cd libsodium-1.0.8 && ./configure --prefix=$HOME/installed_libsodium && make && make install && cd ..
 # libopus0 libopus-dev is missing for now
 - sudo apt-get install libssl-dev
 script:
