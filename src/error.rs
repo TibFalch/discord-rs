@@ -5,7 +5,7 @@ use hyper::Error as HyperError;
 use serde_json::Error as JsonError;
 use serde_json::Value;
 use websocket::result::WebSocketError;
-#[cfg(feature="use_opus")]
+#[cfg(feature="voice")]
 use opus::Error as OpusError;
 use byteorder::Error as BoError;
 
@@ -24,7 +24,7 @@ pub enum Error {
 	/// A `std::io` module error
 	Io(IoError),
 	/// An error in the Opus library, with the function name and error code
-	#[cfg(feature="use_opus")]
+	#[cfg(feature="voice")]
 	Opus(OpusError),
 	/// A websocket connection was closed, possibly with a message
 	Closed(Option<u16>, Vec<u8>),
@@ -80,7 +80,7 @@ impl From<WebSocketError> for Error {
 	}
 }
 
-#[cfg(feature="use_opus")]
+#[cfg(feature="voice")]
 impl From<OpusError> for Error {
 	fn from(err: OpusError) -> Error {
 		Error::Opus(err)
