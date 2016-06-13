@@ -1,4 +1,5 @@
-Copyright (c) 2015 Tad Hardesty
+Copyright (c) 2015 tifalch
+This work is based on Tad Hardesty's discord-rs api!
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
