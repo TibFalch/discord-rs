@@ -3,7 +3,10 @@
 
 Dasi (pronounced /ˈdɑːsi/) is a [Discord](https://discordapp.com) chat client's API.
 
+See the [documentation](http://tibfalch.github.io/dasi-rs/dasi/)!
+
 ## Requirements
+Note: libsodium and libopus aren't needed, if you don't parse the voice feature
 ### Linux
 ```bash
 sudo -s
