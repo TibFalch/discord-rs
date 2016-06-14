@@ -15,8 +15,8 @@ install:
 # libopus0 libopus-dev is missing for now
 - sudo apt-get install libssl-dev
 script:
-- cargo build --verbose
-- cargo test --verbose
+- [ $TRAVIS_RUST_VERSION = stable ] && cargo test --verbose
+- [ $TRAVIS_RUST_VERSION = nightly ] && cargo test --no-default-features --features nightly --verbose
 after_success:
 - |
   [ $TRAVIS_RUST_VERSION = stable ] &&

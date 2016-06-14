@@ -7,11 +7,14 @@ description = "Discord API library"
 readme = "README"
 license = "MIT"
 keywords = ["discord", "chat", "bot", "api", "voice"]
-
 repository = "https://github.com/tifalch/dasi"
+
+build = "build.rs"
 
 [dependencies]
 hyper = "0.8.1"
+serde = "0.7.10"
+serde_macros = {version = "0.7.10", optional = true}
 serde_json = "0.7.1"
 # Newest version is 0.17.1, but that one requires new hyper
 websocket = "0.15.1"
@@ -24,6 +27,10 @@ sodiumoxide = { version = "0.0.10", features = [], optional = true }
 multipart = { version = "0.7", features = ["hyper", "client"] }
 base64-rs = "0.1.0"
 
+[build-dependencies]
+serde_codegen = { version = "0.7.10", optional = true}
+
 [features]
-default = []
+default = ["serde_codegen"]
+nightly = ["serde_macros"]
 voice = ["opus", "sodiumoxide"]

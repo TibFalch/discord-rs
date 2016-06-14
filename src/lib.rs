@@ -23,6 +23,7 @@
 #![warn(missing_docs)]
 
 extern crate hyper;
+extern crate serde;
 extern crate serde_json;
 extern crate websocket;
 #[macro_use]
@@ -44,6 +45,7 @@ use serde_json::builder::ObjectBuilder;
 mod error;
 mod connection;
 mod state;
+mod api;
 #[cfg(feature="voice")]
 pub mod voice;
 pub mod model;
@@ -59,128 +61,47 @@ const GATEWAY_VERSION: u64 = 4;
 
 /// Client for the Discord REST API.
 ///
-/// Log in to the API with a user's email and password using `new()`. Call
+/// Log is as a bot using `new()` with the token.
+/// Log in to the API with a user's email and password using `from_login()`. Call
 /// `connect()` to create a `Connection` on which to receive events. If desired,
 /// use `logout()` to invalidate the token when done. Other methods manipulate
 /// the Discord REST API.
+#[derive(Debug)]
 pub struct Discord {
     client: hyper::Client,
-    token: String,
+    token: api::Token,
 }
 
 impl Discord {
+    /// Log in as a bot account using the given authentication token.
+    pub fn new(token: &str) -> Result<Discord> {
+        Ok(Discord {
+            client: hyper::Client::new(),
+            token: api::Token::new(format!("Bot {}", token)),
+        })
+    }
+
     /// Log in to the Discord Rest API and acquire a token.
-    pub fn new(email: &str, password: &str) -> Result<Discord> {
-        let mut map = BTreeMap::new();
-        map.insert("email", email);
-        map.insert("password", password);
+    pub fn from_login<E: ToString, P: ToString>(email: E, password: P) -> Result<Discord> {
+        let login = api::Login::new(email, password);
 
         let client = hyper::Client::new();
         let response = try!(check_status(client.post(&format!("{}/auth/login", API_BASE))
             .header(hyper::header::ContentType::json())
             .header(hyper::header::UserAgent(USER_AGENT.to_owned()))
-            .body(&try!(serde_json::to_string(&map)))
+            .body(&try!(serde_json::to_string(&login)))
             .send()));
-        let mut json: BTreeMap<String, String> = try!(serde_json::from_reader(response));
-        let token = match json.remove("token") {
-            Some(token) => token,
-            None => return Err(Error::Protocol("Response missing \"token\" in Discord::new()"))
-        };
-        Ok(Discord {
+
+        Ok(Discord{
             client: client,
-            token: token,
+            token: try!(serde_json::from_reader(response))
         })
     }
 
-    /// Log in to the Discord Rest API, possibly using a cached login token.
-    ///
-    /// Cached login tokens are keyed to the email address and will be read from
-    /// and written to the specified path. If no cached token was found and no
-    /// password was specified, an error is returned.
-    pub fn new_cache<P: AsRef<std::path::Path>>(path: P, email: &str, password: Option<&str>) -> Result<Discord> {
-        use std::io::{Write, BufRead, BufReader};
-        use std::fs::File;
-
-        // Read the cache, looking for our token
-        let path = path.as_ref();
-        let mut initial_token: Option<String> = None;
-        if let Ok(file) = File::open(path) {
-            for line in BufReader::new(file).lines() {
-                let line = try!(line);
-                let parts: Vec<_> = line.split('\t').collect();
-                if parts.len() == 2 && parts[0] == email {
-                    initial_token = Some(parts[1].trim().into());
-                    break;
-                }
-            }
-        }
-
-        // Perform the login
-        let discord = if let Some(ref initial_token) = initial_token {
-            let mut map = BTreeMap::new();
-            map.insert("email", email);
-            if let Some(password) = password {
-                map.insert("password", password);
-            }
-
-            let client = hyper::Client::new();
-            let response = try!(check_status(client.post(&format!("{}/auth/login", API_BASE))
-                .header(hyper::header::ContentType::json())
-                .header(hyper::header::UserAgent(USER_AGENT.to_owned()))
-                .header(hyper::header::Authorization(initial_token.clone()))
-                .body(&try!(serde_json::to_string(&map)))
-                .send()));
-            let mut json: BTreeMap<String, String> = try!(serde_json::from_reader(response));
-            let token = match json.remove("token") {
-                Some(token) => token,
-                None => return Err(Error::Protocol("Response missing \"token\" in Discord::new()"))
-            };
-            Discord {
-                client: client,
-                token: token,
-            }
-        } else {
-            if let Some(password) = password {
-                try!(Discord::new(email, password))
-            } else {
-                return Err(Error::Other("No password was specified and no cached token was found"))
-            }
-        };
-
-        // Write the token back out, if needed
-        if initial_token.as_ref() != Some(&discord.token) {
-            let mut tokens = Vec::new();
-            tokens.push(format!("{}\t{}", email, discord.token));
-            if let Ok(file) = File::open(path) {
-                for line in BufReader::new(file).lines() {
-                    let line = try!(line);
-                    if line.split('\t').next() != Some(email) {
-                        tokens.push(line);
-                    }
-                }
-            }
-            let mut file = try!(File::create(path));
-            for line in tokens {
-                try!(file.write_all(line.as_bytes()));
-                try!(file.write_all(&[b'\n']));
-            }
-        }
-
-        Ok(discord)
-    }
-
-    /// Log in as a bot account using the given authentication token.
-    pub fn from_bot_token(token: &str) -> Result<Discord> {
-        Ok(Discord {
-            client: hyper::Client::new(),
-            token: format!("Bot {}", token),
-        })
-    }
 
     /// Log out from the Discord API, invalidating this clients's token.
     pub fn logout(self) -> Result<()> {
-        let map = ObjectBuilder::new().insert("token", &self.token).unwrap();
-        let body = try!(serde_json::to_string(&map));
+        let body = try!(serde_json::to_string(&self.token));
         try!(retry(|| self.client.post(&format!("{}/auth/logout", API_BASE))
             .header(hyper::header::ContentType::json())
             .body(&body)));
@@ -190,7 +111,7 @@ impl Discord {
     fn request<'a, F: Fn() -> hyper::client::RequestBuilder<'a>>(&self, f: F) -> Result<hyper::client::Response> {
         retry(|| f()
             .header(hyper::header::ContentType::json())
-            .header(hyper::header::Authorization(self.token.clone())))
+            .header(hyper::header::Authorization((*self.token).clone())))
     }
 
     /// Create a channel.
@@ -302,7 +223,7 @@ impl Discord {
             Err(_) => return Err(Error::Other("Invalid URL in send_file"))
         };
         let mut request = try!(hyper::client::Request::new(hyper::method::Method::Post, url));
-        request.headers_mut().set(hyper::header::Authorization(self.token.clone()));
+        request.headers_mut().set(hyper::header::Authorization((*self.token).clone()));
         request.headers_mut().set(hyper::header::UserAgent(USER_AGENT.to_owned()));
         let mut request = try!(multipart::client::Multipart::from_request(request));
         try!(request.write_text("content", text));
@@ -539,7 +460,7 @@ impl Discord {
         // If a token was included in the response, switch to it. Important because if the
         // password was changed, the old token is invalidated.
         if let Some(serde_json::Value::String(token)) = json.remove("token") {
-            self.token = token;
+            self.token = api::Token::new(token);
         }
         CurrentUser::decode(serde_json::Value::Object(json))
     }

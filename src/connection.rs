@@ -9,6 +9,7 @@ use serde_json;
 use serde_json::builder::ObjectBuilder;
 
 use model::*;
+use api;
 use internal::Status;
 #[cfg(feature="voice")]
 use voice::VoiceConnection;
@@ -23,7 +24,7 @@ pub struct Connection {
     #[cfg(feature="voice")]
     user_id: UserId,
     ws_url: String,
-    token: String,
+    token: api::Token,
     session_id: Option<String>,
     last_sequence: u64,
 }
@@ -84,7 +85,7 @@ impl Connection {
             .spawn(move || keepalive(heartbeat_interval, sender, rx)));
 
         // return the connection
-        Connection::inner_new(tx, receiver, base_url.to_owned(), token.to_owned(),
+        Connection::inner_new(tx, receiver, base_url.to_owned(), api::Token::new(token),
             Some(session_id), sequence, ready)
     }
 
@@ -92,7 +93,7 @@ impl Connection {
     fn inner_new(keepalive_channel: mpsc::Sender<Status>,
     receiver: Receiver<WebSocketStream>,
     ws_url: String,
-    token: String,
+    token: api::Token,
     session_id: Option<String>,
     last_sequence: u64, ready: ReadyEvent) -> Result<(Self, ReadyEvent)> {
         Ok((Connection {
@@ -109,7 +110,7 @@ impl Connection {
     fn inner_new(keepalive_channel: mpsc::Sender<Status>,
     receiver: Receiver<WebSocketStream>,
     ws_url: String,
-    token: String,
+    token: api::Token,
     session_id: Option<String>,
     last_sequence: u64, ready: ReadyEvent) -> Result<(Self, ReadyEvent)> {
         Ok((Connection {
@@ -244,7 +245,7 @@ impl Connection {
         // If those fail, hit REST for a new endpoint
         let (conn, ready) = try!(::Discord {
             client: ::hyper::client::Client::new(),
-            token: self.token.to_owned()
+            token: self.token.clone()
         }.connect());
         try!(::std::mem::replace(self, conn).shutdown());
         self.session_id = Some(ready.session_id.clone());
