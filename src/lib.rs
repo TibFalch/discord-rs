@@ -55,7 +55,7 @@ pub use connection::Connection;
 pub use state::{State, ChannelRef};
 use model::*;
 
-const USER_AGENT: &'static str = concat!("DiscordBot (https://github.com/TibFalch/dasi-rs, ", env!("CARGO_PKG_VERSION"), ")");
+const USER_AGENT: &'static str = concat!("DiscordBot (https://github.com/tifalch/dasi-rs, ", env!("CARGO_PKG_VERSION"), ")");
 const API_BASE: &'static str = "https://discordapp.com/api";
 const GATEWAY_VERSION: u64 = 4;
 

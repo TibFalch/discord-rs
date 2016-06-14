@@ -1,5 +1,5 @@
 # dasi-rs
-[![Travis Build Status](https://img.shields.io/travis/tifalch/dasi-rs.svg?style=flat-square)](https://travis-ci.org/TibFalch/dasi-rs)
+[![Travis Build Status](https://img.shields.io/travis/tifalch/dasi-rs.svg?style=flat-square)](https://travis-ci.org/tifalch/dasi-rs)
 
 Dasi (pronounced /ˈdɑːsi/) is a [Discord](https://discordapp.com) chat client's API.
 
