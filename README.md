@@ -1,9 +1,9 @@
 # dasi-rs
-[![Travis Build Status](https://img.shields.io/travis/TibFalch/dasi-rs.svg?style=flat-square)](https://travis-ci.org/TibFalch/dasi-rs)
+[![Travis Build Status](https://img.shields.io/travis/tifalch/dasi-rs.svg?style=flat-square)](https://travis-ci.org/tibfalch/dasi-rs)
 
 Dasi (pronounced /ˈdɑːsi/) is a [Discord](https://discordapp.com) chat client's API.
 
-See the [documentation](http://tibfalch.github.io/dasi-rs/dasi/)!
+See the [documentation](http://tifalch.github.io/dasi-rs/dasi/)!
 
 ## Requirements
 Note: libsodium and libopus aren't needed, if you don't parse the voice feature
@@ -23,7 +23,7 @@ pacman -S mingw-w64-x86_64-pkg-config mingw-w64-x86_64-libsodium mingw-w64-x86_6
 Add this your Cargo.toml:
 ```toml
 [dependencies]
-dasi = {git = "https://github.com/TibFalch/dasi-rs.git"}
+dasi = {git = "https://github.com/tifalch/dasi-rs.git"}
 ```
 
 To create a Discord client for your Bot to control you need to call `Discord::from_bot_token("YOUR-TOKEN")`
