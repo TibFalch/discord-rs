@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["Error","Discord API error type."]],"type":[["Result","Discord API `Result` alias type."]]});

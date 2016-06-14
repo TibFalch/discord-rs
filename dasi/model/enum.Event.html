@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Event` enum in crate `dasi`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Event">
+
+    <title>dasi::model::Event - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../index.html'>dasi</a>::<wbr><a href='index.html'>model</a></p><script>window.sidebarCurrent = {name: 'Event', ty: 'enum', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content enum">
+<h1 class='fqn'><span class='in-band'>Enum <a href='../index.html'>dasi</a>::<wbr><a href='index.html'>model</a>::<wbr><a class='enum' href=''>Event</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a id='src-3359' class='srclink' href='../../src/dasi/src/model.rs.html#1180-1296' title='goto source code'>[src]</a></span></h1>
+<pre class='rust enum'>pub enum Event {
+    Ready(<a class='struct' href='../../dasi/model/struct.ReadyEvent.html' title='dasi::model::ReadyEvent'>ReadyEvent</a>),
+    Resumed {
+        heartbeat_interval: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u64.html'>u64</a>,
+        trace: <a class='struct' href='https://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>&gt;&gt;,
+    },
+    UserUpdate(<a class='struct' href='../../dasi/model/struct.CurrentUser.html' title='dasi::model::CurrentUser'>CurrentUser</a>),
+    UserSettingsUpdate {
+        enable_tts_command: <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>&gt;,
+        inline_attachment_media: <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>&gt;,
+        inline_embed_media: <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>&gt;,
+        locale: <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>&gt;,
+        message_display_compact: <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>&gt;,
+        render_embeds: <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>&gt;,
+        show_current_game: <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>&gt;,
+        theme: <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>&gt;,
+        convert_emoticons: <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>&gt;,
+        allow_email_friend_request: <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>&gt;,
+        friend_source_flags: <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='struct' href='../../dasi/model/struct.FriendSourceFlags.html' title='dasi::model::FriendSourceFlags'>FriendSourceFlags</a>&gt;,
+    },
+    UserServerSettingsUpdate(<a class='struct' href='../../dasi/model/struct.UserServerSettings.html' title='dasi::model::UserServerSettings'>UserServerSettings</a>),
+    VoiceStateUpdate(<a class='struct' href='../../dasi/model/struct.ServerId.html' title='dasi::model::ServerId'>ServerId</a>, <a class='struct' href='../../dasi/model/struct.VoiceState.html' title='dasi::model::VoiceState'>VoiceState</a>),
+    VoiceServerUpdate {
+        server_id: <a class='struct' href='../../dasi/model/struct.ServerId.html' title='dasi::model::ServerId'>ServerId</a>,
+        endpoint: <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>&gt;,
+        token: <a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>,
+    },
+    TypingStart {
+        channel_id: <a class='struct' href='../../dasi/model/struct.ChannelId.html' title='dasi::model::ChannelId'>ChannelId</a>,
+        user_id: <a class='struct' href='../../dasi/model/struct.UserId.html' title='dasi::model::UserId'>UserId</a>,
+        timestamp: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u64.html'>u64</a>,
+    },
+    PresenceUpdate {
+        presence: <a class='struct' href='../../dasi/model/struct.Presence.html' title='dasi::model::Presence'>Presence</a>,
+        server_id: <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='struct' href='../../dasi/model/struct.ServerId.html' title='dasi::model::ServerId'>ServerId</a>&gt;,
+        roles: <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='struct' href='../../dasi/model/struct.RoleId.html' title='dasi::model::RoleId'>RoleId</a>&gt;&gt;,
+    },
+    PresencesReplace(<a class='struct' href='https://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='struct' href='../../dasi/model/struct.Presence.html' title='dasi::model::Presence'>Presence</a>&gt;),
+    RelationshipAdd(<a class='struct' href='../../dasi/model/struct.Relationship.html' title='dasi::model::Relationship'>Relationship</a>),
+    RelationshipRemove(<a class='struct' href='../../dasi/model/struct.UserId.html' title='dasi::model::UserId'>UserId</a>, <a class='enum' href='../../dasi/model/enum.RelationshipType.html' title='dasi::model::RelationshipType'>RelationshipType</a>),
+    MessageCreate(<a class='struct' href='../../dasi/model/struct.Message.html' title='dasi::model::Message'>Message</a>),
+    MessageUpdate {
+        id: <a class='struct' href='../../dasi/model/struct.MessageId.html' title='dasi::model::MessageId'>MessageId</a>,
+        channel_id: <a class='struct' href='../../dasi/model/struct.ChannelId.html' title='dasi::model::ChannelId'>ChannelId</a>,
+        content: <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>&gt;,
+        nonce: <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>&gt;,
+        tts: <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>&gt;,
+        timestamp: <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>&gt;,
+        edited_timestamp: <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>&gt;,
+        author: <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='struct' href='../../dasi/model/struct.User.html' title='dasi::model::User'>User</a>&gt;,
+        mention_everyone: <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>&gt;,
+        mentions: <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='struct' href='../../dasi/model/struct.User.html' title='dasi::model::User'>User</a>&gt;&gt;,
+        mention_roles: <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='struct' href='../../dasi/model/struct.RoleId.html' title='dasi::model::RoleId'>RoleId</a>&gt;&gt;,
+        attachments: <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='struct' href='../../dasi/model/struct.Attachment.html' title='dasi::model::Attachment'>Attachment</a>&gt;&gt;,
+        embeds: <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='enum' href='../../serde_json/value/enum.Value.html' title='serde_json::value::Value'>Value</a>&gt;&gt;,
+    },
+    MessageAck {
+        channel_id: <a class='struct' href='../../dasi/model/struct.ChannelId.html' title='dasi::model::ChannelId'>ChannelId</a>,
+        message_id: <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='struct' href='../../dasi/model/struct.MessageId.html' title='dasi::model::MessageId'>MessageId</a>&gt;,
+    },
+    MessageDelete {
+        channel_id: <a class='struct' href='../../dasi/model/struct.ChannelId.html' title='dasi::model::ChannelId'>ChannelId</a>,
+        message_id: <a class='struct' href='../../dasi/model/struct.MessageId.html' title='dasi::model::MessageId'>MessageId</a>,
+    },
+    ServerCreate(<a class='enum' href='../../dasi/model/enum.PossibleServer.html' title='dasi::model::PossibleServer'>PossibleServer</a>&lt;<a class='struct' href='../../dasi/model/struct.LiveServer.html' title='dasi::model::LiveServer'>LiveServer</a>&gt;),
+    ServerUpdate(<a class='struct' href='../../dasi/model/struct.Server.html' title='dasi::model::Server'>Server</a>),
+    ServerDelete(<a class='enum' href='../../dasi/model/enum.PossibleServer.html' title='dasi::model::PossibleServer'>PossibleServer</a>&lt;<a class='struct' href='../../dasi/model/struct.Server.html' title='dasi::model::Server'>Server</a>&gt;),
+    ServerMemberAdd(<a class='struct' href='../../dasi/model/struct.ServerId.html' title='dasi::model::ServerId'>ServerId</a>, <a class='struct' href='../../dasi/model/struct.Member.html' title='dasi::model::Member'>Member</a>),
+    ServerMemberUpdate {
+        server_id: <a class='struct' href='../../dasi/model/struct.ServerId.html' title='dasi::model::ServerId'>ServerId</a>,
+        roles: <a class='struct' href='https://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='struct' href='../../dasi/model/struct.RoleId.html' title='dasi::model::RoleId'>RoleId</a>&gt;,
+        user: <a class='struct' href='../../dasi/model/struct.User.html' title='dasi::model::User'>User</a>,
+        nick: <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>&gt;,
+    },
+    ServerMemberRemove(<a class='struct' href='../../dasi/model/struct.ServerId.html' title='dasi::model::ServerId'>ServerId</a>, <a class='struct' href='../../dasi/model/struct.User.html' title='dasi::model::User'>User</a>),
+    ServerMembersChunk(<a class='struct' href='../../dasi/model/struct.ServerId.html' title='dasi::model::ServerId'>ServerId</a>, <a class='struct' href='https://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='struct' href='../../dasi/model/struct.Member.html' title='dasi::model::Member'>Member</a>&gt;),
+    ServerRoleCreate(<a class='struct' href='../../dasi/model/struct.ServerId.html' title='dasi::model::ServerId'>ServerId</a>, <a class='struct' href='../../dasi/model/struct.Role.html' title='dasi::model::Role'>Role</a>),
+    ServerRoleUpdate(<a class='struct' href='../../dasi/model/struct.ServerId.html' title='dasi::model::ServerId'>ServerId</a>, <a class='struct' href='../../dasi/model/struct.Role.html' title='dasi::model::Role'>Role</a>),
+    ServerRoleDelete(<a class='struct' href='../../dasi/model/struct.ServerId.html' title='dasi::model::ServerId'>ServerId</a>, <a class='struct' href='../../dasi/model/struct.RoleId.html' title='dasi::model::RoleId'>RoleId</a>),
+    ServerBanAdd(<a class='struct' href='../../dasi/model/struct.ServerId.html' title='dasi::model::ServerId'>ServerId</a>, <a class='struct' href='../../dasi/model/struct.User.html' title='dasi::model::User'>User</a>),
+    ServerBanRemove(<a class='struct' href='../../dasi/model/struct.ServerId.html' title='dasi::model::ServerId'>ServerId</a>, <a class='struct' href='../../dasi/model/struct.User.html' title='dasi::model::User'>User</a>),
+    ServerIntegrationsUpdate(<a class='struct' href='../../dasi/model/struct.ServerId.html' title='dasi::model::ServerId'>ServerId</a>),
+    ServerEmojisUpdate(<a class='struct' href='../../dasi/model/struct.ServerId.html' title='dasi::model::ServerId'>ServerId</a>, <a class='struct' href='https://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='struct' href='../../dasi/model/struct.Emoji.html' title='dasi::model::Emoji'>Emoji</a>&gt;),
+    ChannelCreate(<a class='enum' href='../../dasi/model/enum.Channel.html' title='dasi::model::Channel'>Channel</a>),
+    ChannelUpdate(<a class='enum' href='../../dasi/model/enum.Channel.html' title='dasi::model::Channel'>Channel</a>),
+    ChannelDelete(<a class='enum' href='../../dasi/model/enum.Channel.html' title='dasi::model::Channel'>Channel</a>),
+    Unknown(<a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>, <a class='struct' href='https://doc.rust-lang.org/nightly/collections/btree/map/struct.BTreeMap.html' title='collections::btree::map::BTreeMap'>BTreeMap</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>, <a class='enum' href='../../serde_json/value/enum.Value.html' title='serde_json::value::Value'>Value</a>&gt;),
+    // some variants omitted
+}</pre><div class='docblock'><p>Event received over a websocket connection</p>
+</div><h2 class='variants'>Variants</h2>
+<table class='variants_table'><tr><td id='variant.Ready'><code>Ready</code></td><td><div class='docblock'><p>The first event in a connection, containing the initial state.</p>
+
+<p>May also be received at a later time in the event of a reconnect.</p>
+</div></td><td></td></tr><tr><td id='variant.Resumed'><code>Resumed</code></td><td><div class='docblock'><p>The connection has successfully resumed after a disconnect.</p>
+</div><h3 class='fields'>Fields</h3>
+
+                           <table><tr><td id='variant.Resumed.field.heartbeat_interval'><code>heartbeat_interval</code></td><td></td></tr><tr><td id='variant.Resumed.field.trace'><code>trace</code></td><td></td></tr></table></td><td></td></tr><tr><td id='variant.UserUpdate'><code>UserUpdate</code></td><td><div class='docblock'><p>Update to the logged-in user&#39;s information</p>
+</div></td><td></td></tr><tr><td id='variant.UserSettingsUpdate'><code>UserSettingsUpdate</code></td><td><div class='docblock'><p>Update to the logged-in user&#39;s preferences or client settings</p>
+</div><h3 class='fields'>Fields</h3>
+
+                           <table><tr><td id='variant.UserSettingsUpdate.field.enable_tts_command'><code>enable_tts_command</code></td><td></td></tr><tr><td id='variant.UserSettingsUpdate.field.inline_attachment_media'><code>inline_attachment_media</code></td><td></td></tr><tr><td id='variant.UserSettingsUpdate.field.inline_embed_media'><code>inline_embed_media</code></td><td></td></tr><tr><td id='variant.UserSettingsUpdate.field.locale'><code>locale</code></td><td></td></tr><tr><td id='variant.UserSettingsUpdate.field.message_display_compact'><code>message_display_compact</code></td><td></td></tr><tr><td id='variant.UserSettingsUpdate.field.render_embeds'><code>render_embeds</code></td><td></td></tr><tr><td id='variant.UserSettingsUpdate.field.show_current_game'><code>show_current_game</code></td><td></td></tr><tr><td id='variant.UserSettingsUpdate.field.theme'><code>theme</code></td><td></td></tr><tr><td id='variant.UserSettingsUpdate.field.convert_emoticons'><code>convert_emoticons</code></td><td></td></tr><tr><td id='variant.UserSettingsUpdate.field.allow_email_friend_request'><code>allow_email_friend_request</code></td><td></td></tr><tr><td id='variant.UserSettingsUpdate.field.friend_source_flags'><code>friend_source_flags</code></td><td></td></tr></table></td><td></td></tr><tr><td id='variant.UserServerSettingsUpdate'><code>UserServerSettingsUpdate</code></td><td><div class='docblock'><p>Update to the logged-in user&#39;s server-specific notification settings</p>
+</div></td><td></td></tr><tr><td id='variant.VoiceStateUpdate'><code>VoiceStateUpdate</code></td><td><div class='docblock'><p>A member&#39;s voice state has changed</p>
+</div></td><td></td></tr><tr><td id='variant.VoiceServerUpdate'><code>VoiceServerUpdate</code></td><td><div class='docblock'><p>Voice server information is available</p>
+</div><h3 class='fields'>Fields</h3>
+
+                           <table><tr><td id='variant.VoiceServerUpdate.field.server_id'><code>server_id</code></td><td></td></tr><tr><td id='variant.VoiceServerUpdate.field.endpoint'><code>endpoint</code></td><td></td></tr><tr><td id='variant.VoiceServerUpdate.field.token'><code>token</code></td><td></td></tr></table></td><td></td></tr><tr><td id='variant.TypingStart'><code>TypingStart</code></td><td><div class='docblock'><p>A user is typing; considered to last 5 seconds</p>
+</div><h3 class='fields'>Fields</h3>
+
+                           <table><tr><td id='variant.TypingStart.field.channel_id'><code>channel_id</code></td><td></td></tr><tr><td id='variant.TypingStart.field.user_id'><code>user_id</code></td><td></td></tr><tr><td id='variant.TypingStart.field.timestamp'><code>timestamp</code></td><td></td></tr></table></td><td></td></tr><tr><td id='variant.PresenceUpdate'><code>PresenceUpdate</code></td><td><div class='docblock'><p>A member&#39;s presence state (or username or avatar) has changed</p>
+</div><h3 class='fields'>Fields</h3>
+
+                           <table><tr><td id='variant.PresenceUpdate.field.presence'><code>presence</code></td><td></td></tr><tr><td id='variant.PresenceUpdate.field.server_id'><code>server_id</code></td><td></td></tr><tr><td id='variant.PresenceUpdate.field.roles'><code>roles</code></td><td></td></tr></table></td><td></td></tr><tr><td id='variant.PresencesReplace'><code>PresencesReplace</code></td><td><div class='docblock'><p>The precense list of the user&#39;s friends should be replaced entirely</p>
+</div></td><td></td></tr><tr><td id='variant.RelationshipAdd'><code>RelationshipAdd</code></td><td></td><td></td></tr><tr><td id='variant.RelationshipRemove'><code>RelationshipRemove</code></td><td></td><td></td></tr><tr><td id='variant.MessageCreate'><code>MessageCreate</code></td><td></td><td></td></tr><tr><td id='variant.MessageUpdate'><code>MessageUpdate</code></td><td><div class='docblock'><p>A message has been edited, either by the user or the system</p>
+</div><h3 class='fields'>Fields</h3>
+
+                           <table><tr><td id='variant.MessageUpdate.field.id'><code>id</code></td><td></td></tr><tr><td id='variant.MessageUpdate.field.channel_id'><code>channel_id</code></td><td></td></tr><tr><td id='variant.MessageUpdate.field.content'><code>content</code></td><td></td></tr><tr><td id='variant.MessageUpdate.field.nonce'><code>nonce</code></td><td></td></tr><tr><td id='variant.MessageUpdate.field.tts'><code>tts</code></td><td></td></tr><tr><td id='variant.MessageUpdate.field.timestamp'><code>timestamp</code></td><td></td></tr><tr><td id='variant.MessageUpdate.field.edited_timestamp'><code>edited_timestamp</code></td><td></td></tr><tr><td id='variant.MessageUpdate.field.author'><code>author</code></td><td></td></tr><tr><td id='variant.MessageUpdate.field.mention_everyone'><code>mention_everyone</code></td><td></td></tr><tr><td id='variant.MessageUpdate.field.mentions'><code>mentions</code></td><td></td></tr><tr><td id='variant.MessageUpdate.field.mention_roles'><code>mention_roles</code></td><td></td></tr><tr><td id='variant.MessageUpdate.field.attachments'><code>attachments</code></td><td></td></tr><tr><td id='variant.MessageUpdate.field.embeds'><code>embeds</code></td><td></td></tr></table></td><td></td></tr><tr><td id='variant.MessageAck'><code>MessageAck</code></td><td><div class='docblock'><p>Another logged-in device acknowledged this message</p>
+</div><h3 class='fields'>Fields</h3>
+
+                           <table><tr><td id='variant.MessageAck.field.channel_id'><code>channel_id</code></td><td></td></tr><tr><td id='variant.MessageAck.field.message_id'><code>message_id</code></td><td><div class='docblock'><p>May be <code>None</code> if a private channel with no messages has closed.</p>
+</div></td></tr></table></td><td></td></tr><tr><td id='variant.MessageDelete'><code>MessageDelete</code></td><td><h3 class='fields'>Fields</h3>
+
+                           <table><tr><td id='variant.MessageDelete.field.channel_id'><code>channel_id</code></td><td></td></tr><tr><td id='variant.MessageDelete.field.message_id'><code>message_id</code></td><td></td></tr></table></td><td></td></tr><tr><td id='variant.ServerCreate'><code>ServerCreate</code></td><td></td><td></td></tr><tr><td id='variant.ServerUpdate'><code>ServerUpdate</code></td><td></td><td></td></tr><tr><td id='variant.ServerDelete'><code>ServerDelete</code></td><td></td><td></td></tr><tr><td id='variant.ServerMemberAdd'><code>ServerMemberAdd</code></td><td></td><td></td></tr><tr><td id='variant.ServerMemberUpdate'><code>ServerMemberUpdate</code></td><td><div class='docblock'><p>A member&#39;s roles have changed</p>
+</div><h3 class='fields'>Fields</h3>
+
+                           <table><tr><td id='variant.ServerMemberUpdate.field.server_id'><code>server_id</code></td><td></td></tr><tr><td id='variant.ServerMemberUpdate.field.roles'><code>roles</code></td><td></td></tr><tr><td id='variant.ServerMemberUpdate.field.user'><code>user</code></td><td></td></tr><tr><td id='variant.ServerMemberUpdate.field.nick'><code>nick</code></td><td></td></tr></table></td><td></td></tr><tr><td id='variant.ServerMemberRemove'><code>ServerMemberRemove</code></td><td></td><td></td></tr><tr><td id='variant.ServerMembersChunk'><code>ServerMembersChunk</code></td><td></td><td></td></tr><tr><td id='variant.ServerRoleCreate'><code>ServerRoleCreate</code></td><td></td><td></td></tr><tr><td id='variant.ServerRoleUpdate'><code>ServerRoleUpdate</code></td><td></td><td></td></tr><tr><td id='variant.ServerRoleDelete'><code>ServerRoleDelete</code></td><td></td><td></td></tr><tr><td id='variant.ServerBanAdd'><code>ServerBanAdd</code></td><td></td><td></td></tr><tr><td id='variant.ServerBanRemove'><code>ServerBanRemove</code></td><td></td><td></td></tr><tr><td id='variant.ServerIntegrationsUpdate'><code>ServerIntegrationsUpdate</code></td><td></td><td></td></tr><tr><td id='variant.ServerEmojisUpdate'><code>ServerEmojisUpdate</code></td><td></td><td></td></tr><tr><td id='variant.ChannelCreate'><code>ChannelCreate</code></td><td></td><td></td></tr><tr><td id='variant.ChannelUpdate'><code>ChannelUpdate</code></td><td></td><td></td></tr><tr><td id='variant.ChannelDelete'><code>ChannelDelete</code></td><td></td><td></td></tr><tr><td id='variant.Unknown'><code>Unknown</code></td><td><div class='docblock'><p>An event type not covered by the above</p>
+</div></td><td></td></tr></table><h2 id='implementations'>Trait Implementations</h2><h3 id='derived_implementations'>Derived Implementations </h3><h3 class='impl'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html' title='core::clone::Clone'>Clone</a> for <a class='enum' href='../../dasi/model/enum.Event.html' title='dasi::model::Event'>Event</a></code></h3><div class='impl-items'><h4 id='method.clone' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone' class='fnname'>clone</a>(&amp;self) -&gt; <a class='enum' href='../../dasi/model/enum.Event.html' title='dasi::model::Event'>Event</a></code></h4>
+<h4 id='method.clone_from' class='method'><span class="since">1.0.0</span><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from' class='fnname'>clone_from</a>(&amp;mut self, source: &amp;Self)</code></h4>
+</div><h3 class='impl'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a> for <a class='enum' href='../../dasi/model/enum.Event.html' title='dasi::model::Event'>Event</a></code></h3><div class='impl-items'><h4 id='method.fmt' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#tymethod.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class='struct' href='https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html' title='core::fmt::Formatter'>Formatter</a>) -&gt; <a class='type' href='https://doc.rust-lang.org/nightly/core/fmt/type.Result.html' title='core::fmt::Result'>Result</a></code></h4>
+</div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "dasi";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

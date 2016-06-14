@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["ChannelRef","A reference to a private or public channel"]],"struct":[["State","Known state composed from received events."]]});

@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["Connection","Websocket connection to the Discord servers."]]});

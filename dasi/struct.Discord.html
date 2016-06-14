@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Discord` struct in crate `dasi`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Discord">
+
+    <title>dasi::Discord - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='index.html'>dasi</a></p><script>window.sidebarCurrent = {name: 'Discord', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>dasi</a>::<wbr><a class='struct' href=''>Discord</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a id='src-4090' class='srclink' href='../src/dasi/src/lib.rs.html#66-69' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct Discord {
+    // some fields omitted
+}</pre><div class='docblock'><p>Client for the Discord REST API.</p>
+
+<p>Log in to the API with a user&#39;s email and password using <code>new()</code>. Call
+<code>connect()</code> to create a <code>Connection</code> on which to receive events. If desired,
+use <code>logout()</code> to invalidate the token when done. Other methods manipulate
+the Discord REST API.</p>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><code>impl <a class='struct' href='../dasi/struct.Discord.html' title='dasi::Discord'>Discord</a></code></h3><div class='impl-items'><h4 id='method.new' class='method'><code>fn <a href='#method.new' class='fnname'>new</a>(email: &amp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, password: &amp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='type' href='../dasi/type.Result.html' title='dasi::Result'>Result</a>&lt;<a class='struct' href='../dasi/struct.Discord.html' title='dasi::Discord'>Discord</a>&gt;</code></h4>
+<div class='docblock'><p>Log in to the Discord Rest API and acquire a token.</p>
+</div><h4 id='method.new_cache' class='method'><code>fn <a href='#method.new_cache' class='fnname'>new_cache</a>&lt;P: <a class='trait' href='https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html' title='core::convert::AsRef'>AsRef</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/std/path/struct.Path.html' title='std::path::Path'>Path</a>&gt;&gt;(path: P, email: &amp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, password: <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;&amp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>&gt;) -&gt; <a class='type' href='../dasi/type.Result.html' title='dasi::Result'>Result</a>&lt;<a class='struct' href='../dasi/struct.Discord.html' title='dasi::Discord'>Discord</a>&gt;</code></h4>
+<div class='docblock'><p>Log in to the Discord Rest API, possibly using a cached login token.</p>
+
+<p>Cached login tokens are keyed to the email address and will be read from
+and written to the specified path. If no cached token was found and no
+password was specified, an error is returned.</p>
+</div><h4 id='method.from_bot_token' class='method'><code>fn <a href='#method.from_bot_token' class='fnname'>from_bot_token</a>(token: &amp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='type' href='../dasi/type.Result.html' title='dasi::Result'>Result</a>&lt;<a class='struct' href='../dasi/struct.Discord.html' title='dasi::Discord'>Discord</a>&gt;</code></h4>
+<div class='docblock'><p>Log in as a bot account using the given authentication token.</p>
+</div><h4 id='method.logout' class='method'><code>fn <a href='#method.logout' class='fnname'>logout</a>(self) -&gt; <a class='type' href='../dasi/type.Result.html' title='dasi::Result'>Result</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>()</a>&gt;</code></h4>
+<div class='docblock'><p>Log out from the Discord API, invalidating this clients&#39;s token.</p>
+</div><h4 id='method.create_channel' class='method'><code>fn <a href='#method.create_channel' class='fnname'>create_channel</a>(&amp;self, server: &amp;<a class='struct' href='../dasi/model/struct.ServerId.html' title='dasi::model::ServerId'>ServerId</a>, name: &amp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, kind: <a class='enum' href='../dasi/model/enum.ChannelType.html' title='dasi::model::ChannelType'>ChannelType</a>) -&gt; <a class='type' href='../dasi/type.Result.html' title='dasi::Result'>Result</a>&lt;<a class='enum' href='../dasi/model/enum.Channel.html' title='dasi::model::Channel'>Channel</a>&gt;</code></h4>
+<div class='docblock'><p>Create a channel.</p>
+</div><h4 id='method.edit_channel' class='method'><code>fn <a href='#method.edit_channel' class='fnname'>edit_channel</a>(&amp;self, channel: &amp;<a class='struct' href='../dasi/model/struct.ChannelId.html' title='dasi::model::ChannelId'>ChannelId</a>, name: <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;&amp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>&gt;, position: <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.i64.html'>i64</a>&gt;, topic: <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;&amp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>&gt;) -&gt; <a class='type' href='../dasi/type.Result.html' title='dasi::Result'>Result</a>&lt;<a class='enum' href='../dasi/model/enum.Channel.html' title='dasi::model::Channel'>Channel</a>&gt;</code></h4>
+<div class='docblock'><p>Edit a channel&#39;s name.</p>
+</div><h4 id='method.delete_channel' class='method'><code>fn <a href='#method.delete_channel' class='fnname'>delete_channel</a>(&amp;self, channel: &amp;<a class='struct' href='../dasi/model/struct.ChannelId.html' title='dasi::model::ChannelId'>ChannelId</a>) -&gt; <a class='type' href='../dasi/type.Result.html' title='dasi::Result'>Result</a>&lt;<a class='enum' href='../dasi/model/enum.Channel.html' title='dasi::model::Channel'>Channel</a>&gt;</code></h4>
+<div class='docblock'><p>Delete a channel.</p>
+</div><h4 id='method.broadcast_typing' class='method'><code>fn <a href='#method.broadcast_typing' class='fnname'>broadcast_typing</a>(&amp;self, channel: &amp;<a class='struct' href='../dasi/model/struct.ChannelId.html' title='dasi::model::ChannelId'>ChannelId</a>) -&gt; <a class='type' href='../dasi/type.Result.html' title='dasi::Result'>Result</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>()</a>&gt;</code></h4>
+<div class='docblock'><p>Indicate typing on a channel for the next 5 seconds.</p>
+</div><h4 id='method.get_messages' class='method'><code>fn <a href='#method.get_messages' class='fnname'>get_messages</a>(&amp;self, channel: &amp;<a class='struct' href='../dasi/model/struct.ChannelId.html' title='dasi::model::ChannelId'>ChannelId</a>, before: <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;&amp;<a class='struct' href='../dasi/model/struct.MessageId.html' title='dasi::model::MessageId'>MessageId</a>&gt;, after: <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;&amp;<a class='struct' href='../dasi/model/struct.MessageId.html' title='dasi::model::MessageId'>MessageId</a>&gt;, limit: <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u64.html'>u64</a>&gt;) -&gt; <a class='type' href='../dasi/type.Result.html' title='dasi::Result'>Result</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='struct' href='../dasi/model/struct.Message.html' title='dasi::model::Message'>Message</a>&gt;&gt;</code></h4>
+<div class='docblock'><p>Get messages in the backlog for a given channel.</p>
+
+<p>Before and after limits can be specified to narrow the results. A
+message count limit can also be specified, defaulting to 50. Newer
+messages appear first in the list.</p>
+</div><h4 id='method.send_message' class='method'><code>fn <a href='#method.send_message' class='fnname'>send_message</a>(&amp;self, channel: &amp;<a class='struct' href='../dasi/model/struct.ChannelId.html' title='dasi::model::ChannelId'>ChannelId</a>, text: &amp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, nonce: &amp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, tts: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>) -&gt; <a class='type' href='../dasi/type.Result.html' title='dasi::Result'>Result</a>&lt;<a class='struct' href='../dasi/model/struct.Message.html' title='dasi::model::Message'>Message</a>&gt;</code></h4>
+<div class='docblock'><p>Send a message to a given channel.</p>
+
+<p>The <code>nonce</code> will be returned in the result and also transmitted to other
+clients. The empty string is a good default if you don&#39;t care.</p>
+</div><h4 id='method.edit_message' class='method'><code>fn <a href='#method.edit_message' class='fnname'>edit_message</a>(&amp;self, channel: &amp;<a class='struct' href='../dasi/model/struct.ChannelId.html' title='dasi::model::ChannelId'>ChannelId</a>, message: &amp;<a class='struct' href='../dasi/model/struct.MessageId.html' title='dasi::model::MessageId'>MessageId</a>, text: &amp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='type' href='../dasi/type.Result.html' title='dasi::Result'>Result</a>&lt;<a class='struct' href='../dasi/model/struct.Message.html' title='dasi::model::Message'>Message</a>&gt;</code></h4>
+<div class='docblock'><p>Edit a previously posted message.</p>
+
+<p>Requires that either the message was posted by this user, or this user
+has permission to manage other members&#39; messages.</p>
+</div><h4 id='method.delete_message' class='method'><code>fn <a href='#method.delete_message' class='fnname'>delete_message</a>(&amp;self, channel: &amp;<a class='struct' href='../dasi/model/struct.ChannelId.html' title='dasi::model::ChannelId'>ChannelId</a>, message: &amp;<a class='struct' href='../dasi/model/struct.MessageId.html' title='dasi::model::MessageId'>MessageId</a>) -&gt; <a class='type' href='../dasi/type.Result.html' title='dasi::Result'>Result</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>()</a>&gt;</code></h4>
+<div class='docblock'><p>Delete a previously posted message.</p>
+
+<p>Requires that either the message was posted by this user, or this user
+has permission to manage other members&#39; messages.</p>
+</div><h4 id='method.send_file' class='method'><code>fn <a href='#method.send_file' class='fnname'>send_file</a>&lt;R: <a class='trait' href='https://doc.rust-lang.org/nightly/std/io/trait.Read.html' title='std::io::Read'>Read</a>&gt;(&amp;self, channel: &amp;<a class='struct' href='../dasi/model/struct.ChannelId.html' title='dasi::model::ChannelId'>ChannelId</a>, text: &amp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, file: R, filename: &amp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='type' href='../dasi/type.Result.html' title='dasi::Result'>Result</a>&lt;<a class='struct' href='../dasi/model/struct.Message.html' title='dasi::model::Message'>Message</a>&gt;</code></h4>
+<div class='docblock'><p>Send a file attached to a message on a given channel.</p>
+
+<p>The <code>text</code> is allowed to be empty, but the filename must always be specified.</p>
+</div><h4 id='method.ack_message' class='method'><code>fn <a href='#method.ack_message' class='fnname'>ack_message</a>(&amp;self, channel: &amp;<a class='struct' href='../dasi/model/struct.ChannelId.html' title='dasi::model::ChannelId'>ChannelId</a>, message: &amp;<a class='struct' href='../dasi/model/struct.MessageId.html' title='dasi::model::MessageId'>MessageId</a>) -&gt; <a class='type' href='../dasi/type.Result.html' title='dasi::Result'>Result</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>()</a>&gt;</code></h4>
+<div class='docblock'><p>Acknowledge this message as &quot;read&quot; by this client.</p>
+</div><h4 id='method.get_servers' class='method'><code>fn <a href='#method.get_servers' class='fnname'>get_servers</a>(&amp;self) -&gt; <a class='type' href='../dasi/type.Result.html' title='dasi::Result'>Result</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='struct' href='../dasi/model/struct.ServerInfo.html' title='dasi::model::ServerInfo'>ServerInfo</a>&gt;&gt;</code></h4>
+<div class='docblock'><p>Get the list of servers this user knows about.</p>
+</div><h4 id='method.create_server' class='method'><code>fn <a href='#method.create_server' class='fnname'>create_server</a>(&amp;self, name: &amp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, region: &amp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, icon: <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;&amp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>&gt;) -&gt; <a class='type' href='../dasi/type.Result.html' title='dasi::Result'>Result</a>&lt;<a class='struct' href='../dasi/model/struct.Server.html' title='dasi::model::Server'>Server</a>&gt;</code></h4>
+<div class='docblock'><p>Create a new server with the given name.</p>
+</div><h4 id='method.edit_server' class='method'><code>fn <a href='#method.edit_server' class='fnname'>edit_server</a>&lt;F: <a class='trait' href='https://doc.rust-lang.org/nightly/core/ops/trait.FnOnce.html' title='core::ops::FnOnce'>FnOnce</a>(<a class='struct' href='../dasi/struct.EditServer.html' title='dasi::EditServer'>EditServer</a>) -&gt; <a class='struct' href='../dasi/struct.EditServer.html' title='dasi::EditServer'>EditServer</a>&gt;(&amp;self, server_id: <a class='struct' href='../dasi/model/struct.ServerId.html' title='dasi::model::ServerId'>ServerId</a>, f: F) -&gt; <a class='type' href='../dasi/type.Result.html' title='dasi::Result'>Result</a>&lt;<a class='struct' href='../dasi/model/struct.Server.html' title='dasi::model::Server'>Server</a>&gt;</code></h4>
+<div class='docblock'><p>Edit a server&#39;s information. See <code>EditServer</code> for the editable fields.</p>
+
+<pre class='rust rust-example-rendered'>
+<span class='comment'>// Rename a server</span>
+<span class='ident'>discord</span>.<span class='ident'>edit_server</span>(<span class='ident'>server_id</span>, <span class='op'>|</span><span class='ident'>server</span><span class='op'>|</span> <span class='ident'>server</span>.<span class='ident'>name</span>(<span class='string'>&quot;My Cool Server&quot;</span>));
+<span class='comment'>// Edit many properties at once</span>
+<span class='ident'>discord</span>.<span class='ident'>edit_server</span>(<span class='ident'>server_id</span>, <span class='op'>|</span><span class='ident'>server</span><span class='op'>|</span> <span class='ident'>server</span>
+    .<span class='ident'>name</span>(<span class='string'>&quot;My Cool Server&quot;</span>)
+    .<span class='ident'>icon</span>(<span class='prelude-val'>Some</span>(<span class='string'>&quot;data:image/jpg;base64,...&quot;</span>))
+    .<span class='ident'>afk_timeout</span>(<span class='number'>300</span>)
+    .<span class='ident'>region</span>(<span class='string'>&quot;us-south&quot;</span>)
+);</pre>
+</div><h4 id='method.leave_server' class='method'><code>fn <a href='#method.leave_server' class='fnname'>leave_server</a>(&amp;self, server: &amp;<a class='struct' href='../dasi/model/struct.ServerId.html' title='dasi::model::ServerId'>ServerId</a>) -&gt; <a class='type' href='../dasi/type.Result.html' title='dasi::Result'>Result</a>&lt;<a class='struct' href='../dasi/model/struct.Server.html' title='dasi::model::Server'>Server</a>&gt;</code></h4>
+<div class='docblock'><p>Leave the given server.</p>
+</div><h4 id='method.delete_server' class='method'><code>fn <a href='#method.delete_server' class='fnname'>delete_server</a>(&amp;self, server: &amp;<a class='struct' href='../dasi/model/struct.ServerId.html' title='dasi::model::ServerId'>ServerId</a>) -&gt; <a class='type' href='../dasi/type.Result.html' title='dasi::Result'>Result</a>&lt;<a class='struct' href='../dasi/model/struct.Server.html' title='dasi::model::Server'>Server</a>&gt;</code></h4>
+<div class='docblock'><p>Delete the given server. Only available to the server owner.</p>
+</div><h4 id='method.get_bans' class='method'><code>fn <a href='#method.get_bans' class='fnname'>get_bans</a>(&amp;self, server: &amp;<a class='struct' href='../dasi/model/struct.ServerId.html' title='dasi::model::ServerId'>ServerId</a>) -&gt; <a class='type' href='../dasi/type.Result.html' title='dasi::Result'>Result</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='struct' href='../dasi/model/struct.User.html' title='dasi::model::User'>User</a>&gt;&gt;</code></h4>
+<div class='docblock'><p>Get the ban list for the given server.</p>
+</div><h4 id='method.add_ban' class='method'><code>fn <a href='#method.add_ban' class='fnname'>add_ban</a>(&amp;self, server: &amp;<a class='struct' href='../dasi/model/struct.ServerId.html' title='dasi::model::ServerId'>ServerId</a>, user: &amp;<a class='struct' href='../dasi/model/struct.UserId.html' title='dasi::model::UserId'>UserId</a>, delete_message_days: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u32.html'>u32</a>) -&gt; <a class='type' href='../dasi/type.Result.html' title='dasi::Result'>Result</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>()</a>&gt;</code></h4>
+<div class='docblock'><p>Ban a user from the server, optionally deleting their recent messages.</p>
+
+<p>Zero may be passed for <code>delete_message_days</code> if no deletion is desired.</p>
+</div><h4 id='method.remove_ban' class='method'><code>fn <a href='#method.remove_ban' class='fnname'>remove_ban</a>(&amp;self, server: &amp;<a class='struct' href='../dasi/model/struct.ServerId.html' title='dasi::model::ServerId'>ServerId</a>, user: &amp;<a class='struct' href='../dasi/model/struct.UserId.html' title='dasi::model::UserId'>UserId</a>) -&gt; <a class='type' href='../dasi/type.Result.html' title='dasi::Result'>Result</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>()</a>&gt;</code></h4>
+<div class='docblock'><p>Unban a user from the server.</p>
+</div><h4 id='method.get_invite' class='method'><code>fn <a href='#method.get_invite' class='fnname'>get_invite</a>(&amp;self, invite: &amp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='type' href='../dasi/type.Result.html' title='dasi::Result'>Result</a>&lt;<a class='struct' href='../dasi/model/struct.Invite.html' title='dasi::model::Invite'>Invite</a>&gt;</code></h4>
+<div class='docblock'><p>Extract information from an invite.</p>
+
+<p>The invite should either be a URL of the form <code>http://discord.gg/CODE</code>,
+or a string containing just the <code>CODE</code>.</p>
+</div><h4 id='method.get_server_invites' class='method'><code>fn <a href='#method.get_server_invites' class='fnname'>get_server_invites</a>(&amp;self, server: <a class='struct' href='../dasi/model/struct.ServerId.html' title='dasi::model::ServerId'>ServerId</a>) -&gt; <a class='type' href='../dasi/type.Result.html' title='dasi::Result'>Result</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='struct' href='../dasi/model/struct.RichInvite.html' title='dasi::model::RichInvite'>RichInvite</a>&gt;&gt;</code></h4>
+<div class='docblock'><p>Get the active invites for a server.</p>
+</div><h4 id='method.get_channel_invites' class='method'><code>fn <a href='#method.get_channel_invites' class='fnname'>get_channel_invites</a>(&amp;self, channel: <a class='struct' href='../dasi/model/struct.ChannelId.html' title='dasi::model::ChannelId'>ChannelId</a>) -&gt; <a class='type' href='../dasi/type.Result.html' title='dasi::Result'>Result</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='struct' href='../dasi/model/struct.RichInvite.html' title='dasi::model::RichInvite'>RichInvite</a>&gt;&gt;</code></h4>
+<div class='docblock'><p>Get the active invites for a channel.</p>
+</div><h4 id='method.accept_invite' class='method'><code>fn <a href='#method.accept_invite' class='fnname'>accept_invite</a>(&amp;self, invite: &amp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='type' href='../dasi/type.Result.html' title='dasi::Result'>Result</a>&lt;<a class='struct' href='../dasi/model/struct.Invite.html' title='dasi::model::Invite'>Invite</a>&gt;</code></h4>
+<div class='docblock'><p>Accept an invite. See <code>get_invite</code> for details.</p>
+</div><h4 id='method.create_invite' class='method'><code>fn <a href='#method.create_invite' class='fnname'>create_invite</a>(&amp;self, channel: <a class='struct' href='../dasi/model/struct.ChannelId.html' title='dasi::model::ChannelId'>ChannelId</a>, max_age: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u64.html'>u64</a>, max_uses: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u64.html'>u64</a>, temporary: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>, xkcdpass: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>) -&gt; <a class='type' href='../dasi/type.Result.html' title='dasi::Result'>Result</a>&lt;<a class='struct' href='../dasi/model/struct.RichInvite.html' title='dasi::model::RichInvite'>RichInvite</a>&gt;</code></h4>
+<div class='docblock'><p>Create an invite to a channel.</p>
+
+<p>Passing 0 for <code>max_age</code> or <code>max_uses</code> means no limit. <code>max_age</code> should be specified in
+seconds. Enabling <code>xkcdpass</code> forces a 30-minute expiry.</p>
+</div><h4 id='method.delete_invite' class='method'><code>fn <a href='#method.delete_invite' class='fnname'>delete_invite</a>(&amp;self, invite: &amp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='type' href='../dasi/type.Result.html' title='dasi::Result'>Result</a>&lt;<a class='struct' href='../dasi/model/struct.Invite.html' title='dasi::model::Invite'>Invite</a>&gt;</code></h4>
+<div class='docblock'><p>Delete an invite. See <code>get_invite</code> for details.</p>
+</div><h4 id='method.edit_member_roles' class='method'><code>fn <a href='#method.edit_member_roles' class='fnname'>edit_member_roles</a>(&amp;self, server: &amp;<a class='struct' href='../dasi/model/struct.ServerId.html' title='dasi::model::ServerId'>ServerId</a>, user: &amp;<a class='struct' href='../dasi/model/struct.UserId.html' title='dasi::model::UserId'>UserId</a>, roles: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.slice.html'>&amp;[</a>&amp;<a class='struct' href='../dasi/model/struct.RoleId.html' title='dasi::model::RoleId'>RoleId</a><a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.slice.html'>]</a>) -&gt; <a class='type' href='../dasi/type.Result.html' title='dasi::Result'>Result</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>()</a>&gt;</code></h4>
+<div class='docblock'><p>Edit the list of roles assigned to a member of a server.</p>
+</div><h4 id='method.kick_member' class='method'><code>fn <a href='#method.kick_member' class='fnname'>kick_member</a>(&amp;self, server: &amp;<a class='struct' href='../dasi/model/struct.ServerId.html' title='dasi::model::ServerId'>ServerId</a>, user: &amp;<a class='struct' href='../dasi/model/struct.UserId.html' title='dasi::model::UserId'>UserId</a>) -&gt; <a class='type' href='../dasi/type.Result.html' title='dasi::Result'>Result</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>()</a>&gt;</code></h4>
+<div class='docblock'><p>Kick a member from a server.</p>
+</div><h4 id='method.create_private_channel' class='method'><code>fn <a href='#method.create_private_channel' class='fnname'>create_private_channel</a>(&amp;self, recipient: &amp;<a class='struct' href='../dasi/model/struct.UserId.html' title='dasi::model::UserId'>UserId</a>) -&gt; <a class='type' href='../dasi/type.Result.html' title='dasi::Result'>Result</a>&lt;<a class='struct' href='../dasi/model/struct.PrivateChannel.html' title='dasi::model::PrivateChannel'>PrivateChannel</a>&gt;</code></h4>
+<div class='docblock'><p>Create a private channel with the given user, or return the existing
+one if it exists.</p>
+</div><h4 id='method.get_user_avatar_url' class='method'><code>fn <a href='#method.get_user_avatar_url' class='fnname'>get_user_avatar_url</a>(&amp;self, user: &amp;<a class='struct' href='../dasi/model/struct.UserId.html' title='dasi::model::UserId'>UserId</a>, avatar: &amp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a></code></h4>
+<div class='docblock'><p>Get the URL at which a user&#39;s avatar is located.</p>
+</div><h4 id='method.get_user_avatar' class='method'><code>fn <a href='#method.get_user_avatar' class='fnname'>get_user_avatar</a>(&amp;self, user: &amp;<a class='struct' href='../dasi/model/struct.UserId.html' title='dasi::model::UserId'>UserId</a>, avatar: &amp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='type' href='../dasi/type.Result.html' title='dasi::Result'>Result</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a>&gt;&gt;</code></h4>
+<div class='docblock'><p>Download a user&#39;s avatar.</p>
+</div><h4 id='method.edit_profile' class='method'><code>fn <a href='#method.edit_profile' class='fnname'>edit_profile</a>&lt;F: <a class='trait' href='https://doc.rust-lang.org/nightly/core/ops/trait.FnOnce.html' title='core::ops::FnOnce'>FnOnce</a>(<a class='struct' href='../dasi/struct.EditProfile.html' title='dasi::EditProfile'>EditProfile</a>) -&gt; <a class='struct' href='../dasi/struct.EditProfile.html' title='dasi::EditProfile'>EditProfile</a>&gt;(&amp;mut self, f: F) -&gt; <a class='type' href='../dasi/type.Result.html' title='dasi::Result'>Result</a>&lt;<a class='struct' href='../dasi/model/struct.CurrentUser.html' title='dasi::model::CurrentUser'>CurrentUser</a>&gt;</code></h4>
+<div class='docblock'><p>Edit the logged-in user&#39;s profile. See <code>EditProfile</code> for editable fields.</p>
+
+<p>This method requires mutable access because editing the profile generates a new token.</p>
+</div><h4 id='method.get_voice_regions' class='method'><code>fn <a href='#method.get_voice_regions' class='fnname'>get_voice_regions</a>(&amp;self) -&gt; <a class='type' href='../dasi/type.Result.html' title='dasi::Result'>Result</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='struct' href='../dasi/model/struct.VoiceRegion.html' title='dasi::model::VoiceRegion'>VoiceRegion</a>&gt;&gt;</code></h4>
+<div class='docblock'><p>Get the list of available voice regions for a server.</p>
+</div><h4 id='method.move_member_voice' class='method'><code>fn <a href='#method.move_member_voice' class='fnname'>move_member_voice</a>(&amp;self, server: &amp;<a class='struct' href='../dasi/model/struct.ServerId.html' title='dasi::model::ServerId'>ServerId</a>, user: &amp;<a class='struct' href='../dasi/model/struct.UserId.html' title='dasi::model::UserId'>UserId</a>, channel: &amp;<a class='struct' href='../dasi/model/struct.ChannelId.html' title='dasi::model::ChannelId'>ChannelId</a>) -&gt; <a class='type' href='../dasi/type.Result.html' title='dasi::Result'>Result</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>()</a>&gt;</code></h4>
+<div class='docblock'><p>Move a server member to another voice channel.</p>
+</div><h4 id='method.connect' class='method'><code>fn <a href='#method.connect' class='fnname'>connect</a>(&amp;self) -&gt; <a class='type' href='../dasi/type.Result.html' title='dasi::Result'>Result</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>(</a><a class='struct' href='../dasi/struct.Connection.html' title='dasi::Connection'>Connection</a>, <a class='struct' href='../dasi/model/struct.ReadyEvent.html' title='dasi::model::ReadyEvent'>ReadyEvent</a><a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>)</a>&gt;</code></h4>
+<div class='docblock'><p>Establish a websocket connection over which events can be received.</p>
+
+<p>Also returns the <code>ReadyEvent</code> sent by Discord upon establishing the
+connection, which contains the initial state as seen by the client.</p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "dasi";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    
+    <script defer src="../search-index.js"></script>
+</body>
+</html>
