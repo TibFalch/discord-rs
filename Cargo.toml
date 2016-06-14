@@ -7,7 +7,7 @@ description = "Discord API library"
 readme = "README"
 license = "MIT"
 keywords = ["discord", "chat", "bot", "api", "voice"]
-repository = "https://github.com/tifalch/dasi"
+repository = "https://github.com/tifalch/dasi-rs"
 
 build = "build.rs"
 
